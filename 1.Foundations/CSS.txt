@@ -1,0 +1,43 @@
+What Does CSS Do?
+CSS (Cascading Style Sheets) plays a crucial role in enhancing the visual appeal and functionality of your website. 
+By adding styles like colors, font sizes, background colors, and more, CSS not only makes your website more aesthetically pleasing but 
+also improves the overall user experience.
+
+CSS is essential for positioning elements on a web page, providing developers with precise control over layout and design. 
+Techniques like static, relative, absolute, and fixed positioning allow for exact placement of elements, enabling the creation of 
+visually appealing and functional designs. Proper positioning ensures that content is both accessible and intuitive for users, 
+making navigation smoother and more enjoyable.
+
+How to Add Styles
+You can add styles directly within your HTML using the style attribute. For example:
+<h1 style="color: red; background-color: green;">Hi there</h1>
+
+Common Styling Attributes
+These fundamental CSS attributes give developers control over the appearance and layout of elements. 
+They help define colors, spacing, borders, and shadows to create a more engaging design.
+
+color – Specifies the color of text
+background – Sets the background color of an element
+border-radius – Rounds the corners of an element
+border – Defines the border around an element
+padding / margin – Controls spacing inside and outside elements
+box-shadow – Adds a shadow effect to an element
+
+How to Position Elements?
+1. Float Property
+The float property allows you to position an element within its parent container. You can use values like left, right, top, and bottom to control the element's position, 
+helping you achieve complex layouts.
+
+2. Flexbox
+Flexbox (short for "Flexible Box Layout") is a layout model in CSS that allows you to design complex layouts with ease. It is particularly useful for aligning and distributing space among elements inside a container, 
+even when their size is unknown or dynamic. Flexbox makes it simple to create responsive and flexible layouts without needing to use floats or positioning hacks.
+
+To use Flexbox, you apply the display: flex property to the parent container. This activates the flex container behavior, and the direct children of the container automatically become flex items.
+
+The justify-content property defines how child elements are aligned along the main axis of the container. Some of its key values include:
+flex-start: Aligns items to the start of the container (default).
+flex-end: Aligns items to the end of the container.
+center: Centers the items within the container.
+space-between: Distributes the items evenly with the first item at the start and the last item at the end.
+space-around: Distributes items with equal space around them.
+space-evenly: Distributes items with equal space between them, including the edges of the container.

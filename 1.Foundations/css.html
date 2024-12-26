@@ -1,0 +1,25 @@
+<h1 style="font-size:10px; color:red ; background-color: aqua; border-radius: 10px; border: 10px solid black; padding: 10px; margin: 50px;">
+    hi there
+</h1>
+
+<h1 style="color:red ; background-color: aqua; border-radius: 10px; box-shadow: 2px 10px 10px red; padding: 10px; margin: 50px;">
+    hi there
+</h1>
+
+<!--Positioning using float property-->
+<div style="margin-left: 100px; margin-right: 100px;">
+    <img src="logo.svg" width="200px">
+    <span style="float: right;">Sign Up</span> <!--The float property puts the element to right of the parent tag that is div tag-->
+</div>
+
+<!--Professionally the elements needs to positioned in a unit by something called flex box-->
+<div style="display: flex; justify-content: space-between; margin-left: 100px; margin-right: 100px; margin-top: 100px"> <!--The display:flex property indicates all your children elements needs to lie in the same line and we will not require to take all the width they need-->
+    <!--Justify content states that all the child elements needs to align at the start of the box unit -->
+    <!--The other values for justify-content are:- 
+    flex-end:- aligns the items at the end of the box unit, 
+    space-between:- aligns the items equally spaced between them-->
+    <img src="logo.svg" width="200px">
+    <div>
+        Sign Up
+    </div>
+</div>
