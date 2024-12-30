@@ -1,0 +1,22 @@
+// For Example, let us take C++ code:-
+
+/* #include <iostream>
+    using namespace std;
+
+    int main() {
+        int number=5; //Declaration of an integer variable
+        number = "Hello"; // Thsi will cause compile time error
+
+        cout<< number << endl;
+        return 0;
+    }
+*/
+// Benefits :- More strict code
+// Let us take JS code:-
+/*  let num = 5 // Variable initially holds a number
+    num = "Hello" // Variable now holds a string
+
+    console.log(num); // Output:- "Hello"
+*/
+// Benefits:- Can move fast.
+

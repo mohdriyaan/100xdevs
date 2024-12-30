@@ -1,0 +1,16 @@
+What are compilers?
+Compilers convert high level developer friendly code into 0's and 1's.
+In C++, we will write the code first, then that sorce code file is compiled to generate a temp file which provides the output.
+
+But JS is different. It is interpreted language.
+In this case, it will covert the code into 0's and 1's line by line instead of compiling the whole file.
+
+Differences between compiled languages and interpreted languages
+Compiled Languages:- 1. First need to compile, then need to run
+                     2. Usually don't compile if there is an error in code.
+                     Ex:- C++, Rust, Java, GoLang.
+
+Interpreted Languages:- 1. Usually go line by line.
+                        2. Can run partially if error comes later
+                        Ex:- JS, Python.
+

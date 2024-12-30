@@ -1,0 +1,8 @@
+There are 2 types of languages:-
+1. Single Threaded Language
+2. Multi-Threaded Language
+
+JS is famous for being single threaded language.JS is restricted to execute the processes to a single core at a time and cannot run multiple processes 
+parallely in a single core rather it uses the context switching to run multiple processes. 
+This is why it is considered to be a bad language for scalable systems.
+

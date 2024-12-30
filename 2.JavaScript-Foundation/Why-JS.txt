@@ -1,0 +1,4 @@
+Why is JS better than other languages?
+
+Browsers can only understand HTML/CSS/JS (not technically true).
+Thanks to NodeJS, JS can also be used for "BackEnd Web Development"

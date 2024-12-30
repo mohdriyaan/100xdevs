@@ -1,0 +1,22 @@
+Why languages, Why were they introduced and why there are so many languages?
+
+Before discussing languages, we will need to see how the computers work.
+Every application that is your browser, movies, photos, etc is stored in the SSD. However once when we run the application, it runs in something called RAM.
+Basically means the current things that are currently running on your machine resides in the RAM and everything else that's not currently running resides in the SSD.
+
+But the question is when we want the application to run from SSD to RAM. What exactly goes into RAM?
+Any final program that you run on your machine, be it a game or the fancy browser, in the end, what's running is the bunch of numbers that is 0's and 1's in the RAM.
+
+Why a bunch of numbers?
+Because the hardware dosen't really understand programming languages. It only has some sort of circuits, which can be either on or off. And since there can be only 2 states, they
+are usually reperesented as zeroes and ones.
+
+Does that mean the developers of application wrote zeroes and ones when they were writing source code?
+No they probably wrote it either in Java, C++, JavaScript or some other language. 
+Java, C++, JavaScript or some other language are high level languages in which we write code and all of them have compilers, which coverts this high level code into zeros and ones 
+which actually go into your RAM and your machine can understand.
+That is why we need languages because it will be much hard to write in zeros and ones.
+
+There are so many languages because each have various optimizations and use cases can only be built in certain languages.
+For Ex:- browser code or websites can only be written in HTML,CSS and JavaScript.
+
