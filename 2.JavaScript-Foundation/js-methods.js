@@ -84,4 +84,4 @@ function isNum(num){
 initialArr.forEach(multiply) //forEach function calls a function for each elements in an array.
 initialArr.forEach(isNum)
 
-// map method
+
