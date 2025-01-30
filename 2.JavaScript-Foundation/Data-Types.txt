@@ -1,0 +1,8 @@
+Data types represents different kinds of values we can use in JS.
+
+Data Types are classified into 2 types:-
+1. Primitive Data Type:- They can hold single value. String, Number, Boolean, BigInt, undefined, null, Symbol are primitive data types.
+2. Non-Primitive Data Type:- They can hold multiple values. Arrays and Objects are Non-Primitive data types.
+
+
+
