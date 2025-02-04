@@ -20,5 +20,3 @@ while(num>=0){
 }
 console.log(`${sum}`)
 
-// do while loop
-let 
