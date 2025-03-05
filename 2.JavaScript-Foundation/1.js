@@ -1,10 +1,15 @@
 function Company(companyName,marketCap){
     this.name = companyName,
     this.money = marketCap
+    this.introduction=function(){
+        return(`My company is ${this.name} and the MArket cap is ${this.money}`)
+    }
 }
 
 const company1 = new Company("apple",29000)
 const company2 = new Company("bmw",239000)
+
+console.log(company2.introduction())
 
 console.log(company1)
 
