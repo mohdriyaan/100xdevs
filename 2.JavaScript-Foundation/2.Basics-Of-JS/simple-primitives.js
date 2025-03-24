@@ -4,6 +4,7 @@
     2) let
     3) const
 */
+// * Variables are case-sensitive.
 
 let a = 1 // defined the variable
 a = 2; // changed the value of the variable

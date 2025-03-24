@@ -57,3 +57,4 @@ switch (age) {
     default:
         console.log("Other Age Group");
 }
+

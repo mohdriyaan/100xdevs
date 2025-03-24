@@ -1,0 +1,36 @@
+In 1995, there was a popular web browser called Netscape Navigator decides to have programming lanugage that provide interactivity to the 
+websites.
+
+So, Brendan Eich one of the computer programmer in Netscape Navigator created the language in just 10 days.  
+And named the language as Mocha. And then later changed the name to LiveScript.
+
+But it didn't have the much needed popularity so they changed the name to JavaScript because Java in those days was a very popular programming 
+language. 
+
+Internet Explorer in 1996 felt that Netscape Navigator was becoming more popular due to them having Javascript so they introduced their own 
+programming lanuage to add functionality to their websites called JScript by copying some features from the JavaScript as well as adding 
+their own features as well.
+
+So in 1996, there were 2 programming languages:- JavaScript and JScript.
+This created a lot of issues for the consumers due to browser incompatibality issues.
+
+Then JavaScript was taken to ECMA to decide the standardised features across all the browsers and all the browsers needs to implement the 
+features whatever the ECMA decides. ECMA stands for Ecma International, a non-profit standards organization for information and communication 
+systems, formerly known as the European Computer Manufacturers Association.  
+
+ECMA decided to name the JavaScript as ECMAScript due to trademark name of JavaScript belonging to Oracle. It dosen't matter whether you call JavasCript or ECMAScript. 
+
+In 1997, ECMAScript introduced ES1 which is the first specification and now all the browsers will need to use ES1 to add functionality.
+Then came many specifications such as ES2, ES3, ES4 and in 2009 was introduced ES5 with a lot of new features. Then ES6 came in 2015 (Biggest update in the history of JS).
+
+Mostly consider ES6 as the modern JavaScript we currently use today. 
+
+The ECMA has a community called TC39 (Technical Community 39). These people decide on what features needs to be introduced in JS and what should be not. 
+And the TC39 community decided they would release new updates for the JS yearly after 2015.
+ES6:- ES2015
+ES7:- ES2016
+ES8:- ES2017
+
+* JS is a backward compatible since you use the features all the way from the introduction of ES1.
+* JS is not forward compatible which means if the JS gets new features today, the person using the older version of browser won't be able to use those features.
+
