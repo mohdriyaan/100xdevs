@@ -15,6 +15,9 @@ arr.unshift(0)
 
 console.log(arr)
 
+// To check whether it is an array or not
+console.log(Array.isArray(arr)) // true
+
 // Removing elements from an array
 arr.splice(0,2)
 console.log(arr)
