@@ -19,4 +19,6 @@ function greeting() {
 }
 
 // Hoisting can cause undesirable outcomes in your program. So, it's best to avoid this practice.
+// Hoisting can only happen when the function is declared but not when the function expression is used
+
 

@@ -10,7 +10,7 @@
 // Function to add two numbers
 // function addSum(a,b){
 //     return a+b;
-// }
+// } 
 
 // const value = addSum(1,2)
 // console.log(value)
@@ -29,3 +29,29 @@ function minus(a, b){
 
 const value1 = calculateArithmetic(100 , 15, sum)
 console.log(value1)
+
+function oddEven(num){
+    if(num%2==0){
+        return `${num} is even`
+    }else{
+        return `${num} is odd`
+    }
+}
+
+console.log(oddEven(1))
+
+// Checking if eleement is present in array
+
+function isPresent(array,target){
+    for(let i=0;i<=array.length-1;i++){
+        if(target===array[i]){
+            return `${target} found in array. Index number is ${i}`
+        }
+    }
+    return `${target} Not found in array`
+}
+
+
+let array = [10,1,2,4,5]
+
+console.log(isPresent(array,20))

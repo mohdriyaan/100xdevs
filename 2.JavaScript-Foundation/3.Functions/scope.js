@@ -15,7 +15,7 @@ Variables can be declared in different scopes:
 
 // greet()
 
-// console.log(message) Gives error because the variable message is declared inside the function of greet.
+// console.log(message) // Gives error because the variable message is declared inside the function of greet.
 
 // Global Scope
 // declare global variable
