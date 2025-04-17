@@ -1,4 +1,4 @@
-// 
+// some
 
 const nums = [2,,3,5,7]
 
