@@ -5,7 +5,23 @@
 */
 
 function isAnagram(str1, str2) {
+  
+  let length = 0
+  let str1Chars = str1.toLowerCase().split("")
+  let str2Chars = str2.toLowerCase().split("")
+  
+  str1Chars.forEach((char) => {
+    if(str2Chars.includes(char)){
+      length++
+    }
+  });
+  
+
+  if(length==str1.length&&length==str2.length){
+    return true
+  }
+  return false
 }
 
-isAnagram("HELLO")
+console.log(isAnagram("hello","hello!"))
 module.exports = isAnagram;
