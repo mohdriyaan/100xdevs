@@ -5,7 +5,7 @@
 
     int main() {
         int number=5; //Declaration of an integer variable
-        number = "Hello"; // Thsi will cause compile time error
+        number = "Hello"; // This will cause compile time error
 
         cout<< number << endl;
         return 0;

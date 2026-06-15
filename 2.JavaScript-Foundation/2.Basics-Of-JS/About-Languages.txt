@@ -13,7 +13,7 @@ are usually reperesented as zeroes and ones.
 
 Does that mean the developers of application wrote zeroes and ones when they were writing source code?
 No they probably wrote it either in Java, C++, JavaScript or some other language. 
-Java, C++, JavaScript or some other language are high level languages in which we write code and all of them have compilers, which coverts this high level code into zeros and ones 
+Java, C++, JavaScript or some other language are high level languages in which we write code and all of them have compilers, which converts this high level code into zeros and ones 
 which actually go into your RAM and your machine can understand.
 That is why we need languages because it will be much hard to write in zeros and ones.
 

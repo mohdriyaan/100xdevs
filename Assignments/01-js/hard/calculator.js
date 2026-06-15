@@ -24,41 +24,46 @@ class Calculator {
   add(num){
     this.result+=num
   }
+
   subtract(num){
     this.result-=num
   }
+
   multiply(num){
     this.result*=num
   }
+
   divide(num){
     if(num==0){
-      throw new Error("Cannot Divide By Zero")
+      throw new Error("Division cannot be done by zero")
     }
     this.result/=num
   }
+
   clear(){
     this.result = 0
   }
+
   getResult(){
     return this.result
   }
-  calculate(input){
-    let strChars = input.split(" ").join("")
-    let allowedChars = "0123456789+-*/().".split("")
-    
-    for(let chars of strChars){
+
+  calculate(str){
+    str = str.split(" ").join("")
+    let allowedChars = "0123456789+-/*().".split("")
+
+    for(let chars of str){
       if(!allowedChars.includes(chars)){
-        throw new Error("Input should contain only numbers and operators")
+        throw new Error(`Allowed Characters can be numbers or operations`)
       }
     }
 
-    if(strChars.includes("/0")){
+    if(str.includes("/0")){
       throw new Error("Division cannot be done by zero")
     }
 
-
     this.result = Function(
-      `return ${strChars}` 
+      `return ${str}` 
     )()
 
     return this.result

@@ -5,23 +5,29 @@
 */
 
 function isAnagram(str1, str2) {
-  
-  let length = 0
-  let str1Chars = str1.toLowerCase().split("")
-  let str2Chars = str2.toLowerCase().split("")
-  
-  str1Chars.forEach((char) => {
-    if(str2Chars.includes(char)){
-      length++
-    }
-  });
-  
-
-  if(length==str1.length&&length==str2.length){
-    return true
+  // 1st method
+  str1 = str1.toLowerCase()
+  str2 = str2.toLowerCase()
+  if(str1.length!==str2.length){
+    return false
   }
-  return false
+  const splitStr1 = str1.split("")
+  const splitStr2 = str2.split("")
+  for(let i = 0; i < (splitStr1.length&&splitStr2.length); i++){  
+    if(!splitStr1.includes(str2[i])){
+      return false
+    }
+  }
+  return true
+
+  // 2nd method
+  // str1 = str1.toLowerCase().split("").sort().join("")
+  // str2 = str2.toLowerCase().split("").sort().join("")
+  // if(str1===str2){
+  //   return true
+  // }
+  // return false
 }
 
-console.log(isAnagram("hello","hello!"))
+console.log(isAnagram("abc!","!bac"))
 module.exports = isAnagram;

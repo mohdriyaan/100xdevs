@@ -7,13 +7,14 @@ function square(number){
 }
 
 // without using forEach method
-for(let i = 0; i<=nums.length-1;i++){
-    square(nums[i])
-}
+// for(let i = 0; i<=nums.length-1;i++){
+//     square(nums[i])
+// }
 
 // with using forEach method
 // 1st method
-nums.forEach(square)
+
+nums.forEach(elements=>square(elements))
 
 // 2nd method
 nums.forEach(function square(number){

@@ -1,6 +1,6 @@
 What are compilers?
 Compilers convert high level developer friendly code into 0's and 1's.
-In C++, we will write the code first, then that sorce code file is compiled to generate a temp file which provides the output.
+In C++, we will write the code first, then that source code file is compiled to generate a temp file which provides the output.
 
 But JS is different. It is interpreted language.
 In this case, it will covert the code into 0's and 1's line by line instead of compiling the whole file.

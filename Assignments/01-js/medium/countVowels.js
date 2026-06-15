@@ -7,17 +7,18 @@
 
 function countVowels(str) {
     // Your code here
-    const strChars = str.toLowerCase().split("")
+    const vowels = ["a","e","i","o","u"]
     let count = 0
-    
-    strChars.forEach((char)=>{
-      if(char==="a"||char==="e"||char==="i"||char==="o"||char==="u"){
+    str = str.toLowerCase().split("")
+    str.forEach((value)=>{
+      if(vowels.includes(value)){
         count++
       }
     })
-
     return count
 }
+
+console.log(countVowels("AEgry"))
 
 
 

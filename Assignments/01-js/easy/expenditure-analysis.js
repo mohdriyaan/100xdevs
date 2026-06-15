@@ -14,29 +14,28 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  let arr = []
-  transactions.forEach((transaction)=>{
-    let category = transaction.category
-    let totalSpent = transaction.price
-    
-    let found = false
+  const arr = []
+	transactions.forEach((transaction)=>{
+		let category = transaction.category
+		let totalSpent = transaction.price
+		let found = false
 
-    for(let element of arr){
-      if(category === element.category){
-        element.totalSpent += totalSpent
-        found = true
-        break;
-      }
-    }
+		for(let element of arr){
+			if(category===element.category){
+				found = true;
+				element.totalSpent+=totalSpent
+				break;
+			}
+		}
 
-    if(!found){
-      arr.push({
-        category,
-        totalSpent
-      })
-    }
-  })
-  return arr
+		if(!found){
+			arr.push({
+				category,
+				totalSpent
+			})
+		}
+	})
+	return arr
 } 
 
 console.log(calculateTotalSpentByCategory(

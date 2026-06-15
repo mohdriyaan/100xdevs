@@ -1,4 +1,4 @@
-let grade = "w"
+let grade = "F"
 
 switch (grade) {
     case "A":
@@ -30,7 +30,7 @@ switch (grade) {
 // Multiple case values
 // Program to categorize age
 
-let age = 19;
+let age = 20;
 
 switch (age) {
 

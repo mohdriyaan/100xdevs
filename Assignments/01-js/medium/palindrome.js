@@ -4,27 +4,43 @@
 */
 
 function isPalindrome(str) {
-  const strChars = str.toLowerCase().split("")
-  if(strChars.length===1||str===""){
-    return true
+  //   1st method
+  //   const strChars = str.toLowerCase().split("")
+
+  //   for(let i = 0; i<strChars.length; i++){
+  //     if(strChars[i]===" "||strChars[i]===","||strChars[i]==="!"||strChars[i]==="?"||strChars[i]==="."){
+  //       strChars.splice(i,1)
+  //       i--
+  //     }
+  //   }
+  //   // return strChars
+
+  //   for(let i = 0; i < strChars.length/2-1; i++){ 
+  //     if(strChars[i]!==strChars[strChars.length-1-i]){
+  //       return false
+  //     }
+  //   }
+  //   return true
+
+  //   2nd method
+  let strChars = str.toLowerCase().split("")
+  for(let i = 0; i<str.length; i++){
+      if(strChars[i]===" "||strChars[i]===","||strChars[i]==="!"||strChars[i]==="?"||strChars[i]==="."){
+        strChars.splice(i,1)
+        i--
+      }
   }
 
-  for(let i = 0; i<strChars.length; i++){
-    if(strChars[i]==="?"||strChars[i]==="!"||strChars[i]==="."){
-      strChars.splice(i,1)
-    }
-  }
-  
-  for(let i = 0; i<strChars.length/2-1; i++){
-    for(let j = strChars.length-1; j>strChars.length/2-1; j--){
-      if(strChars[i]!==strChars[j]){
-        return false
-      }
-      return true;
-    }
+  let reverseStr = [...strChars].reverse().join("")
+  strChars = strChars.join("")
+
+  if(strChars!==reverseStr){
+    return false
+  }else{
+    return true
   }
 }
 
-console.log(isPalindrome("Nan"))
+console.log(isPalindrome("hello"))
 
 module.exports = isPalindrome;

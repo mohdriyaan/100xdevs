@@ -6,10 +6,10 @@
 // What does asynchronous mean
 /*  Opposite of synchronous
     Happens in parts
-    Multiple things are contect switching with each other
+    Multiple things are context switching with each other
 */
 
-// Even though JS is single threaded, it can do context switcing to delegate the tasks and complete it in a shorter
+// Even though JS is single threaded, it can do context switching to delegate the tasks and complete it in a shorter
 // amount of time.
 // This can be done by asynchronous functions.
 
