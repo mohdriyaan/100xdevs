@@ -8,16 +8,17 @@ function isAnagram(str1, str2) {
   // 1st method
   str1 = str1.toLowerCase()
   str2 = str2.toLowerCase()
+
   if(str1.length!==str2.length){
     return false
   }
-  const splitStr1 = str1.split("")
-  const splitStr2 = str2.split("")
-  for(let i = 0; i < (splitStr1.length&&splitStr2.length); i++){  
-    if(!splitStr1.includes(str2[i])){
+
+  for(let i = 0; i < str1.length&&str2.length; i++){
+    if(!str1.split("").includes(str2[i])){
       return false
     }
   }
+
   return true
 
   // 2nd method

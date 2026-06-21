@@ -24,19 +24,17 @@ class Todo {
   }
 
   update(index,updatedTodo){
-    if(index<=this.todos.length-1){
+    if(this.todos[index]){
       this.todos[index] = updatedTodo
     }
   }
 
   getAll(){
-    const arr = []
-    this.todos.forEach(values=>arr.push(values))
-    return arr
+    return this.todos
   }
 
   get(indexOfTodo){
-    if(indexOfTodo<=this.todos.length-1){
+    if(this.todos[indexOfTodo]){
       return this.todos[indexOfTodo]
     }else{
       return null

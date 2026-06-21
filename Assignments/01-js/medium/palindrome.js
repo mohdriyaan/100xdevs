@@ -5,42 +5,44 @@
 
 function isPalindrome(str) {
   //   1st method
-  //   const strChars = str.toLowerCase().split("")
+  let formattedStr = ""
+  str = str.toLowerCase()
 
-  //   for(let i = 0; i<strChars.length; i++){
+  for(let value of str){
+    if(![" ",",",".","!","?"].includes(value)){
+      formattedStr+=value
+    }
+  }
+
+  str = formattedStr
+
+  for(let i = 0 ; i < str.length/2; i++){
+    if(str[i]!==str[str.length-1-i]){
+      return false
+    }
+  }
+
+  return true
+
+  //   2nd method
+  // let strChars = str.toLowerCase().split("")
+  // for(let i = 0; i<str.length; i++){
   //     if(strChars[i]===" "||strChars[i]===","||strChars[i]==="!"||strChars[i]==="?"||strChars[i]==="."){
   //       strChars.splice(i,1)
   //       i--
   //     }
-  //   }
-  //   // return strChars
+  // }
 
-  //   for(let i = 0; i < strChars.length/2-1; i++){ 
-  //     if(strChars[i]!==strChars[strChars.length-1-i]){
-  //       return false
-  //     }
-  //   }
+  // let reverseStr = [...strChars].reverse().join("")
+  // strChars = strChars.join("")
+
+  // if(strChars!==reverseStr){
+  //   return false
+  // }else{
   //   return true
-
-  //   2nd method
-  let strChars = str.toLowerCase().split("")
-  for(let i = 0; i<str.length; i++){
-      if(strChars[i]===" "||strChars[i]===","||strChars[i]==="!"||strChars[i]==="?"||strChars[i]==="."){
-        strChars.splice(i,1)
-        i--
-      }
-  }
-
-  let reverseStr = [...strChars].reverse().join("")
-  strChars = strChars.join("")
-
-  if(strChars!==reverseStr){
-    return false
-  }else{
-    return true
-  }
+  // }
 }
 
-console.log(isPalindrome("hello"))
+console.log(isPalindrome("Rotor is nu ? ,"))
 
 module.exports = isPalindrome;

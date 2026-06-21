@@ -14,17 +14,18 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  const arr = []
-	transactions.forEach((transaction)=>{
-		let category = transaction.category
-		let totalSpent = transaction.price
-		let found = false
+	const arr = []
 
-		for(let element of arr){
-			if(category===element.category){
-				found = true;
-				element.totalSpent+=totalSpent
-				break;
+	transactions.forEach((transaction)=>{
+		const category = transaction.category
+		const totalSpent = transaction.price
+		let found = false
+		
+		for(let transaction of arr){
+			if(category===transaction.category){
+				found = true
+				transaction.totalSpent+=totalSpent
+				break; 
 			}
 		}
 
@@ -35,6 +36,7 @@ function calculateTotalSpentByCategory(transactions) {
 			})
 		}
 	})
+
 	return arr
 } 
 
