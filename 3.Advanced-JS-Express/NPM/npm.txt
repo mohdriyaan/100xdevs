@@ -1,0 +1,12 @@
+In order to solve the complex problem we require libraries which are not installed on our local system. 
+
+These libraries are external dependencies that are written by the developers and are registered on npm registry.
+
+For ex., express is a package/library registered on npm registry.
+
+So in order to use those packages/libraries or bring those packages locally, we will use npm (Node Package Manager).
+
+Ex: npm install express
+
+
+

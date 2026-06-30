@@ -1,0 +1,8 @@
+ECMAScript is a scripting language or you can specification on which JS is based on.
+
+It is a documentation that tells how JS should like, like it should have numbers, variables, classes, objects and much more.
+
+So if you are thinking to create a compiler for JS, then you'll have to follow ECMAScript.
+
+ECMAScript versions like ES5, ES6 are essential updates to the specification, introducing new features and syntaxes.
+

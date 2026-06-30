@@ -1,0 +1,117 @@
+GitHub is a web based hosting service of git repos.
+You can use git without GitHub but you cannot use GitHub without git.
+
+Local Repo: 
+  Every VCS tool provides private workplace as a working copy. Devs make changes in their private workplace and after commit, these changes become part of the repo. Git provides the whole local copy of the repo to the dev where dev can add a file, make changes to the file, delete the file and much more.
+
+Working Directory and staging Area or Index : An intermediate area where commits can be formatted and reviewed before completing the commit.
+
+push : sends a change to another repo (requires permission)
+
+pull : grab a change from the repo.
+
+Basic Workflow Of Git
+
+Step 1 : You modify file from a working Directory
+Step 2 : You add these files to the staging area.
+Step 3 : You perform commit operation that moves the files from the staging area. After push operation, it stores the changes permanently to the Git repo.
+
+Git's Internal Object Model
+Git stores everything as objects in the .git/objects/ folder. The two fundamental ones are blobs and trees.
+
+## Blob (Binary Large Object)
+
+A blob stores the **raw content of a file** — nothing else. No filename, no path, no metadata.
+
+```
+"hello world"  ──► SHA1 hash ──► stored as a blob
+```
+
+- Every unique file content gets a unique **SHA1 hash**
+- If two files have the **same content**, Git stores only **one blob** (deduplication)
+- Changing even one character creates a **brand new blob**
+
+# You can see a blob's content with:
+git cat-file -p <hash>
+
+## Tree
+
+A tree is like a **directory**. It maps **names and permissions** to blobs (files) or other trees (subdirectories).
+
+```
+tree (root)
+├── blob  abc123  README.md
+├── blob  def456  index.js
+└── tree  ghi789  src/
+              ├── blob  jkl012  app.js
+              └── blob  mno345  utils.js
+```
+
+A tree entry contains:
+- **Mode** (file permissions e.g. `100644`)
+- **Type** (`blob` or `tree`)
+- **Hash** of the object
+- **Name** (filename or folder name)
+
+---
+
+## How They Work Together
+
+```
+Commit
+  └── points to a Tree (root directory snapshot)
+            ├── Blob → file content
+            ├── Blob → file content
+            └── Tree → subdirectory
+                    └── Blob → file content
+```
+
+- A **blob** = file content
+- A **tree** = folder (holds blobs + other trees)
+- A **commit** = snapshot pointing to the root tree
+
+---
+
+## Quick Example
+
+Say your project looks like:
+
+```
+/
+├── index.js
+└── src/
+    └── app.js
+```
+
+Git internally stores it as:
+
+```
+commit
+  └── tree [root]
+        ├── blob abc123 → "index.js content"
+        └── tree [src/]
+                └── blob def456 → "app.js content"
+```
+
+---
+
+## Key Insight
+
+Git doesn't store **diffs** between versions — it stores **full snapshots** every commit. But because blobs are deduplicated by content hash, **unchanged files reuse the same blob**, so it's storage-efficient.
+
+Commits
+A **commit** is just a **save point** for your project.
+
+Every time you commit, Git:
+1. Takes a **snapshot** of all your files at that moment
+2. Attaches your **name, time, and message** to it
+3. Gives it a **unique ID** (hash like `e4f6a2c`)
+4. Links it to the **previous commit**
+
+So your project history ends up as a chain:
+
+```
+[initial commit] ──► [added login] ──► [fixed bug] ──► (current)
+```
+
+That's it — a commit is just a labeled snapshot that knows where it came from.

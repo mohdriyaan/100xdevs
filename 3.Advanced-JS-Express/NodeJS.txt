@@ -1,0 +1,5 @@
+JS was meant only for the browser. 
+Some smart people took out the V8 Engine
+added some backend things like (filesystem, reads, etc) on top to create a new runtime/ backend langauage called NodeJS to compete with Backend languages like Java
+
+JS was never meant to run in the backend but eventually due to NodeJS it eventually became very popular and is popular choice of runtime on the backend.

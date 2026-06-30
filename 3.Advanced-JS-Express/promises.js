@@ -265,60 +265,44 @@ The kitchen runs out of ingredients → Promise is rejected.
 //     }
 //   })
 
-// Workflow
-function login(){
-  return Promise.resolve("token123")
-}
-
-function userProfile(token){
-  return Promise.resolve({
-    id:1,
-    name:"Riyaan"
+function waitDelay(ms){
+  return new Promise((resolve)=>{
+    setTimeout(() => {
+      resolve()
+    }, ms);
   })
 }
 
-function userOrders(userId){
-  return Promise.resolve([
-    {orderId:101},
-    {orderId:102}   
-  ])
-}
-
-function getOrderDetails(orderId){
-  return Promise.resolve({
-    orderId,
-    total:100
-  })
-}
-
-function logout(){
-  return Promise.resolve("Logged Out")
-}
-
-login()
-  .then((value)=>{
-    console.log("Logged In")
-    return userProfile(value)
-  })
-  .then((value)=>{
-    console.log(value)
-    return userOrders(value.id)
-  })
-  .then((orders)=>{
-    console.log(orders)
-    return Promise.all(
-      orders.map(order=>getOrderDetails(order.orderId))
-    )
-  })
-  .then(orderDetails=>{
-    console.log(orderDetails)
-    return logout()
-  })
-  .then(message=>{
-    console.log(message)
-  })
-  .catch((err)=>{
-    console.log("Workflow Failed!")
-  })
+async function fetchUsersWithRetry(url,retries){
+  for(let attempts = 1; attempts<=retries; attempts++ ){
+    try{
+      const response = await fetch(url)
   
+      if(!response.ok){
+        throw new Error("Failed to fetch url")
+      }
 
+      const data = response.json()
+      return data
+    }catch(err){
+      console.log(`Attempt ${attempts}/${retries} failed, Error : ${err.message}`)
+      
+      if(attempts==retries){
+        throw new Error(`Attempts ${attempts}/${retries} completed. Last Error : ${err.message}`)
+      }
+      
+      console.log(`Trying Again...`)
+      await waitDelay(1500)
+    }
+
+  }
+}  
+
+
+fetchUsersWithRetry("https://jsonplaceholder.typicode.com/users",5)
+  .then((data)=>{
+    console.log(`List of Users : ${data.length}`)
+    console.log(`List of Names : `)
+    data.forEach((user)=>console.log(user.name))
+  })
+  .catch((err)=>console.log(err.message))

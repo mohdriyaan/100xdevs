@@ -5,19 +5,18 @@
 
 function isPalindrome(str) {
   //   1st method
-  let formattedStr = ""
+  let formatedStr = ""
+
   str = str.toLowerCase()
 
-  for(let value of str){
-    if(![" ",",",".","!","?"].includes(value)){
-      formattedStr+=value
+  for(let chars of str){
+    if(!["?",".","!"," ",","].includes(chars)){
+      formatedStr+=chars
     }
   }
 
-  str = formattedStr
-
-  for(let i = 0 ; i < str.length/2; i++){
-    if(str[i]!==str[str.length-1-i]){
+  for(let i = 0; i < formatedStr.length/2 ; i++){
+    if(formatedStr[i]!==formatedStr[formatedStr.length-1-i]){
       return false
     }
   }

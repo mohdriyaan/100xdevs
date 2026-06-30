@@ -1,0 +1,16 @@
+What is HTTP Server?
+
+HTTP stands for HyperText Transfer Protocol. 
+1. A protocol that is defined for machines to communicate.
+2. Specifically for websites, it is most common way for your website's frontend to talk to its backend.
+
+In the end, its the client throwing some input/information at a server. 
+Server doing something with that information.
+Finally, Server responding back with the result.
+
+Think of them as functions, where
+1. Arguments are something the client sends.
+2. Rather than calling a fn using a name, the client uses a URL.
+3. Rather than the fn body, the server does something with the request.
+4. Rather than fn returning a value, the server responds with some data.
+

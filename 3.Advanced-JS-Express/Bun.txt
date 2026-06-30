@@ -1,0 +1,6 @@
+Other than the fact that JS is single threaded, Node.js is slow (multiple reasons for it). Some smart people said they wanted to re write JS runtime for the backend and introduced Bun.
+
+It is significantly faster runtime.
+
+It is written in Zig.
+

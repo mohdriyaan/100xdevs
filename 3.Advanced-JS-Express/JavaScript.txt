@@ -1,0 +1,8 @@
+JS is a scripting language that conforms to the ECMAScript specification. It is the most widely known and used implementation of ECMAScript.
+
+Beyond ECMAScript, JS includes additional features that are not part of ECMAScript specification like DOM manipulation and web apis like setTimeout, fs.readFile.
+
+Common JS Browser Engines:
+1. V8 - Used by Google Chrome/Chromium.
+2. SpiderMonkey - Used by Firefox.
+

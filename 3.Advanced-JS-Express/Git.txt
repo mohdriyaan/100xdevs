@@ -1,0 +1,32 @@
+What is Git?
+Free and open source version control system.
+
+Version Control System?
+-> A system that keeps tracks of our files or projects
+-> It allows you to revert the selected files or entire project to a previous state, compare changes over time, see who modified the project and with what details the project has been modified. 
+
+2 types of VCS
+-> Centralized
+  -> There is one central server that holds the entire codebase. Developers check out files from it and push changes back to it.
+  
+  Ex: Subversion and Team foundation server
+  
+  Characteristics:
+    -> Every operation (commit, history, diff) needs a server connection
+    -> If the server goes down → no one can work
+    -> Single point of failure
+    -> Simpler to understand and manage
+    -> Admin has full control over who does what
+
+-> Distributed
+  -> Every developer has a full copy of the repo including complete history on their local machine.
+
+  Ex: Git , Mercurial
+
+  Characteristics:
+  -> Work offline — commit, branch, view history without internet
+  -> Every clone is a full backup
+  -> No single point of failure
+  -> Branching and merging is fast and cheap
+  -> Slightly steeper learning curve 
+

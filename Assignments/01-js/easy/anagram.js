@@ -13,7 +13,7 @@ function isAnagram(str1, str2) {
     return false
   }
 
-  for(let i = 0; i < str1.length&&str2.length; i++){
+  for(let i = 0 ; i < str1.length&&str2.length; i++){
     if(!str1.split("").includes(str2[i])){
       return false
     }
