@@ -115,3 +115,57 @@ So your project history ends up as a chain:
 ```
 
 That's it — a commit is just a labeled snapshot that knows where it came from.
+
+Creating Branches
+
+Checking branch
+-> git branch
+
+Creating new branch 
+-> git checkout -b features
+
+Switching to different branch
+-> git checkout main
+
+Comparing the changes across files and Branches
+git diff features
+
+`````````````````
+diff --git a/README.md b/README.md
+index cb8bdf4..72e43f6 100644
+--- a/README.md
++++ b/README.md
+@@ -2,8 +2,3 @@
+ Adding line.
+ Adding another line
+ hello world
+-## Development Enviroment
+-
+-Make sure you have javascript available
+-Run index.html in the browser.
+``````````````````````````
+
+Deleting a branch
+git branch -d <branch_name>
+
+Understand Merge Conflicts Using google Docs Analogy
+Imagine you and your friend are editing the same Google Doc offline.
+
+You change line 5 to say "Hello World"
+Your friend changes line 5 to say "Hello Everyone"
+
+Now you both come back online and try to sync. Google Docs has no idea which one to keep. It can't decide for you — so it stops and asks "hey, which version do you want?"
+That moment of confusion = a merge conflict.
+
+What Git Does to Your File
+Git doesn't delete anything. It shows you both versions inside the file:
+<<<<<<< HEAD (your version)
+Hello World
+=======
+Hello Everyone
+>>>>>>> main (their version)
+
+Above ======= → your change
+Below ======= → their change
+
+You manually pick one (or combine both), delete the markers, then commit.
