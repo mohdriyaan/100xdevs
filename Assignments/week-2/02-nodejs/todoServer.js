@@ -39,11 +39,128 @@
 
   Testing the server - run `npm run test-todoServer` command in terminal
  */
-  const express = require('express');
-  const bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
+const { error } = require('console');
+const fs = require("fs")
+
+
+const app = express();
+
+app.use(bodyParser.json());
+
+async function findIndex(id){
+  try {
+    const db = await readDataFromDB()
+    for(let i = 0; i < db.length; i++){
+      if(parseInt(id)===db[i].id){
+        return i
+      }
+    }
+    return -1  
+  } catch (error) {
+    console.log(error)
+  }
   
-  const app = express();
+}
+
+function readDataFromDB(){
+  return new Promise((resolve,reject)=>{
+    fs.readFile("todos.json","utf-8",(err,data)=>{
+      if(err){
+        reject(err)
+      }else{
+        resolve(JSON.parse(data))
+      }
+    })
+  })
+}
+
+function writeDataIntoDB(db){
+  fs.writeFile("todos.json",JSON.stringify(db),"utf-8",(err)=>{
+    if(err){
+      console.log(err.message)
+    }
+  })
+}
+
+app.get("/todos",async(req,res)=>{
+  try{
+    const db = await readDataFromDB()
+    res.status(200).json(db)
+  }catch{
+    console.log(error)
+  }
   
-  app.use(bodyParser.json());
+})
+
+app.get("/todos/:id",async(req,res)=>{
+  let id = req.params.id
+  const db = await readDataFromDB()
+  let todoItem =  db[await findIndex(id)]
   
-  module.exports = app;
+  if(todoItem){
+    res.status(200).json(todoItem)
+  }else{
+    res.status(404).send("404 Not Found")
+  }
+})
+
+app.post("/todos",async(req,res)=>{
+  const newTodo = {
+    id : Math.floor(Math.random() * 1000),
+    title : req.body.title,
+    completed : req.body.completed,
+    description : req.body.description
+  }
+  
+  const db = await readDataFromDB()
+
+  db.push(newTodo)
+
+  writeDataIntoDB(db)
+
+  res.status(201).json(newTodo)
+})
+
+app.put("/todos/:id",async(req,res)=>{
+  let id = req.params.id
+  let index = await findIndex(id)
+  const db = await readDataFromDB()
+  if(db[index]){
+    
+    db[index].title = req.body.title
+    db[index].completed = req.body.completed
+    db[index].description = req.body.description
+
+    writeDataIntoDB(db)
+
+    res.status(200).send("Updated todo")
+  }else{
+    res.status(404).send("404 Not Found")
+  }
+})
+
+app.delete("/todos/:id",async(req,res)=>{
+  let id = req.params.id
+  let index = await findIndex(id)
+  const db = await readDataFromDB()
+  
+  if(db[index]){
+    db.splice(index,1)
+    
+    writeDataIntoDB(db)
+    
+    res.status(200).send("Deleted Todo")
+  }else{
+    res.status(404).send("404 Not Found")
+  }
+})
+
+app.use((req,res)=>{
+  res.status(401).send("Invalid routes")
+})
+
+
+// app.listen(3000)
+module.exports = app;
