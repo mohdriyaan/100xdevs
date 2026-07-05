@@ -2,9 +2,10 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const jwtPassword = "123456";
+const connectionString = process.env.DB_URL 
 
 mongoose.connect(
-  "REDACTED/user_app",
+  connectionString
 );
 
 const User = mongoose.model("Users", {
@@ -44,7 +45,7 @@ app.post("/signup",async(req,res)=>{
     password : password
   })
 
-  user.save()
+  await user.save()
 
   return res.status(200).json({
     msg:"User created successfully."
@@ -53,10 +54,11 @@ app.post("/signup",async(req,res)=>{
 
 app.post("/signin", async function (req, res) {
   const username = req.body.username;
+  const existingUser = await userExists(username)
 
-  if (!userExists(username)) {
+  if (!existingUser) {
     return res.status(403).json({
-      msg: "User doesnt exist in our in memory db",
+      msg: "User doesnt exist in  memory db",
     });
   }
 
