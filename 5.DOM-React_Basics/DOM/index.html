@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM</title>
+</head>
+<body>
+  <input oninput="debouncePopulateDiv()"  id="firstNumber" type="text" placeholder="Enter first number"><br><br>
+  <input oninput="debouncePopulateDiv()" id="secondNumber" type="text" placeholder="Enter second number">
+  <br><br>
+  <button onclick="populateDiv2()">Calculate sum</button> <br><br>
+  <div id="finalSum"></div>
+  <script>
+    // debouncing -> minimizes backend requests to the server when the user enters the input 
+    let timeout
+    function debouncePopulateDiv(){
+      clearTimeout(timeout)
+      timeout = setTimeout(()=>{
+        populateDiv()
+      },350)
+    }
+
+    function populateDiv(){
+      const a = document.querySelector("#firstNumber").value
+      const b = document.querySelector("#secondNumber").value
+      const element = document.querySelector("#finalSum")
+      // fetch
+      fetch(`http://localhost:3000/sum?a=${a}&b=${b}`)
+        .then((res)=>{
+          res.text()
+            .then((ans)=>{
+              element.innerHTML = ans
+            })
+        })
+      // element.innerHTML = parseInt(a)+parseInt(b)
+    }
+
+    async function populateDiv2(){
+      const a = document.getElementById("firstNumber").value
+      const b = document.getElementById("secondNumber").value
+      const element = document.querySelector("#finalSum")
+      const res = await fetch(`http://localhost:8080/sum?a=${a}&b=${b}`)
+      const ans = await res.text()
+      element.innerHTML = ans
+    }
+  </script>
+</body>
+</html>

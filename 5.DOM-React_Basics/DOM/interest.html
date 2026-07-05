@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input id="principalAmount" type="text" placeholder="Enter principal amount"> <br><br>
+  <input id="interestRate" type="text" placeholder="Enter Rate Of Interest"> <br><br>
+  <input oninput="debounceCalculate()" id="time" type="text" placeholder="Enter years"> <br> <br>
+  <button onclick="debounceCalculate()">Calculate Interest And Total Amount</button> <br><br>
+  <div id="result"></div>
+  <script>
+    let timeout
+    function debounceCalculate(){
+      clearTimeout(timeout)
+      timeout = setTimeout(()=>{
+        calculateInterest()
+      },350)
+    }
+    async function calculateInterest(){
+      const principalAmount = document.querySelector("#principalAmount").value
+      const interestRate = document.querySelector("#interestRate").value
+      const time = document.querySelector("#time").value
+
+      const response = await fetch(`http://localhost:3000/interest?principal=${principalAmount}&rate=${interestRate}&time=${time}`)
+
+      const ans = await response.json()
+
+      document.querySelector("#result").innerHTML = `Total Amount : ${ans.totalAmount} <br> <br>
+         Interest : ${ans.interest}`
+    }
+  </script>
+</body>
+</html>
