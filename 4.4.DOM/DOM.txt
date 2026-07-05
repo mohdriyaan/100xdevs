@@ -1,0 +1,60 @@
+DOM (Document Object Model) is a standard for how to get, change, add, or delete HTML elements.
+
+JS makes the HTML page active and dynamic via DOM.
+
+You want a button to change colors when it gets clicked or an image to appear when the mouse hovers over the text.
+
+First, you need to reference those elements from your JS.
+
+What is DOM?
+-> A programming interface for web documents.
+-> Represents the page so that programs can change the document structure, style and content.
+-> The DOM is a tree like representation of the web page that gets loaded into the browser.
+-> The DOM represents the document as nodes and objects.
+
+Accessing the DOM?
+When you create a script whether inline or included in the webpage, you can begin using the API for the document or window objects to manipulate the document itself.
+It represents the web page using the series of objects. the main object is the document object, which in turn houses other objects which also house their own objects and so on.
+
+The createElement() method:
+Creates a specified elemeny and insert into the DOM.
+const para = document.createElement("p")
+para.innerText = "Hello hi there"
+document.body.appendChild(para)
+
+Finding HTML elements
+If you want to manipulate HTML elements
+We need to select the elements first. Multiple ways to do this:
+
+-> getElementById()
+Method to get an element from the document by its unique id attributes
+
+<div id="first">Div one</div>
+
+let firstDiv = document.getElementById("first")
+
+-> getElementsByTagname()
+Method to access one or more elements by their HTML tag name.
+
+let divs = document.getElementsByTagname("div") 
+
+<div id="first">Div one</div>
+<div id="second">Div two</div>
+<div id="third">Div three</div>
+
+-> getElementByClassName()
+
+let para = document.getElementByClassName("intro")
+
+<p class="intro"></p>
+<p class="intro"></p>
+
+-> querySelector()
+
+-> querySelectorAll()
+
+Changing HTML elements
+element.innerHTML = new HTML content -> Changes the inner HTML of an element
+element.attribute = new value -> changes the attribute value of an html element.
+element.style.property = new style -> changes the style of an HTML element.
+element.setAttribute(attribute,value) -> changes the attribute value of an HTML element.
