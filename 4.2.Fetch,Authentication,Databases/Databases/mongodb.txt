@@ -1,0 +1,17 @@
+MongoDB lets you create databases
+In each DB, it lets you create tables (coll.ections)
+In each table, it lets you dump JSON data.
+It is schemaless
+It scales well and is a decent choice for most cases.
+
+How to start?
+1. Create a MongoDB free instance by going to MongoDB website.
+2. Get your MongoDB connection URL.
+3. Download MongoDB Compass and try to explore the DB.
+
+How does backend connect to the db?
+Using libraries!
+1. Express lets you create http servers
+2. Jsonwebtokens library lets you create jwts.
+3. Mongoose lets you connect to your database.
+
