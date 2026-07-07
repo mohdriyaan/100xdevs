@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo Application</title>
+</head>
+<body>
+  <div>
+    <input type="text" placeholder="Title" id="title"/> 
+    <br><br>
+    <input type="text" placeholder="Description" id="description"/>
+    <br><br>
+    <div id="container"></div>
+  </div>
+  <script>
+    
+    // function addTodo(){
+    //   const title = document.querySelector("#title").value
+    //   const description = document.querySelector("#description").value
+    //   const parent = document.querySelector("#container")
+      
+      // Ugly Way
+      // let originalHTML = document.querySelector("#container").innerHTML
+      // document.querySelector("#container").innerHTML=originalHTML + `<div>${title}</div>
+      // <div>${description}</div>
+      // <button>Mark as done</button>
+      // `
+
+      // Better Way
+      // const childDiv = document.createElement("div")
+      // childDiv.innerHTML = title
+      // document.querySelector("#container").appendChild(childDiv)
+    //   parent.appendChild(createChild(title,description,globalId++))
+    // }
+
+    function createChild(title,description,id){
+      const childDiv = document.createElement("div")
+      const firstGrandChild = document.createElement("div")
+      firstGrandChild.innerHTML = title
+      const secondGrandChild = document.createElement("div")
+      secondGrandChild.innerHTML = description
+      const thirdGrandChild = document.createElement("button")
+      thirdGrandChild.innerHTML = "Mark as done"
+      thirdGrandChild.setAttribute("onclick",`markasDone(${id})`)
+      childDiv.appendChild(firstGrandChild)
+      childDiv.appendChild(secondGrandChild)
+      childDiv.appendChild(thirdGrandChild)
+      childDiv.setAttribute("id",id)
+      return childDiv
+    }
+    // State will always be an array
+    // Every element of a state would have a title, description and an id
+
+    function updateDocAccToState(state){
+      const parent = document.getElementById("container")
+      parent.innerHTML = ""
+      for(let i = 0; i < state.length; i++){
+        const child = createChild(state[i].title,state[i].description,state[i].id)
+        parent.appendChild(child)
+      }
+    }
+
+    window.setInterval(async()=>{
+      const res = await fetch("http://localhost:8080/todos")
+      const json = await res.json()
+      updateDocAccToState(json.todos)
+    },5000)
+  </script>
+</body>
+</html>
+
+
+<!-- There is a problem with this approach - very hard to add or remove elements. 
+ No central state-->
+ 

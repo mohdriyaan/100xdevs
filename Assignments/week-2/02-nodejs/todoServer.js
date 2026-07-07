@@ -42,125 +42,109 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { error } = require('console');
-const fs = require("fs")
-
+const fs = require("fs");
+const { title } = require('process');
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 
-async function findIndex(id){
-  try {
-    const db = await readDataFromDB()
-    for(let i = 0; i < db.length; i++){
-      if(parseInt(id)===db[i].id){
-        return i
-      }
+async function findTodoIndex(id){
+  const db = await readFileFromDB()
+  for(let i = 0; i<db.length ; i++){
+    if(db[i]["id"]===id){
+      return i
     }
-    return -1  
-  } catch (error) {
-    console.log(error)
   }
-  
 }
 
-function readDataFromDB(){
+function readFileFromDB(){
   return new Promise((resolve,reject)=>{
     fs.readFile("todos.json","utf-8",(err,data)=>{
       if(err){
-        reject(err)
+        reject(res.status(404).send("404 Not Found"))
       }else{
-        resolve(JSON.parse(data))
+        resolve(JSON.parse(data))    
       }
     })
   })
 }
 
 function writeDataIntoDB(db){
-  fs.writeFile("todos.json",JSON.stringify(db),"utf-8",(err)=>{
+  fs.writeFile("todos.json",JSON.stringify(db),(err)=>{
     if(err){
-      console.log(err.message)
+      return res.status(404).send("404 Not Found")
     }
   })
 }
 
 app.get("/todos",async(req,res)=>{
-  try{
-    const db = await readDataFromDB()
-    res.status(200).json(db)
-  }catch{
-    console.log(error)
+  const todos = await readFileFromDB()
+  if(todos){
+    return res.status(200).json(todos)
   }
-  
 })
 
 app.get("/todos/:id",async(req,res)=>{
-  let id = req.params.id
-  const db = await readDataFromDB()
-  let todoItem =  db[await findIndex(id)]
-  
-  if(todoItem){
-    res.status(200).json(todoItem)
+  const id = parseInt(req.params.id)
+  const db = await readFileFromDB()
+  const index = await findTodoIndex(id)  
+
+  if(db[index]){
+    return res.status(200).json(db[index])
   }else{
-    res.status(404).send("404 Not Found")
+    return res.status(404).send("404 Not Found")
   }
 })
 
 app.post("/todos",async(req,res)=>{
   const newTodo = {
-    id : Math.floor(Math.random() * 1000),
+    id : Math.floor(Math.random()*1000),
     title : req.body.title,
     completed : req.body.completed,
-    description : req.body.description
+    description : req.body.description  
   }
-  
-  const db = await readDataFromDB()
 
+  const db = await readFileFromDB()
+  
   db.push(newTodo)
 
-  writeDataIntoDB(db)
+  await writeDataIntoDB(db)
 
   res.status(201).json(newTodo)
+  
 })
 
 app.put("/todos/:id",async(req,res)=>{
-  let id = req.params.id
-  let index = await findIndex(id)
-  const db = await readDataFromDB()
+  const id = parseInt(req.params.id)
+  const db = await readFileFromDB()
+  const index = await findTodoIndex(id)
   if(db[index]){
-    
-    db[index].title = req.body.title
-    db[index].completed = req.body.completed
+    db[index].title = req.body.title,
+    db[index].completed = req.body.completed,
     db[index].description = req.body.description
 
-    writeDataIntoDB(db)
+    await writeDataIntoDB(db)
 
-    res.status(200).send("Updated todo")
+    res.status(200).send("Todo Updated")
   }else{
-    res.status(404).send("404 Not Found")
+    return res.status(404).send("404 Not Found")
   }
 })
 
 app.delete("/todos/:id",async(req,res)=>{
-  let id = req.params.id
-  let index = await findIndex(id)
-  const db = await readDataFromDB()
-  
+  const id = parseInt(req.params.id)
+  const db = await readFileFromDB()
+  const index = await findTodoIndex(id)
+
   if(db[index]){
     db.splice(index,1)
-    
-    writeDataIntoDB(db)
-    
-    res.status(200).send("Deleted Todo")
+    await writeDataIntoDB(db)
+    res.status(200).send("Todo Removed")
   }else{
-    res.status(404).send("404 Not Found")
-  }
+    return res.status(404).send("404 Not Found")
+  }  
 })
-
-app.use((req,res)=>{
-  res.status(401).send("Invalid routes")
-})
-
 
 // app.listen(3000)
 module.exports = app;
