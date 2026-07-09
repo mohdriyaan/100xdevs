@@ -1,0 +1,106 @@
+What is database?
+It is a place where data is stored persistently.
+Servers are transient , database is persistent.
+
+Examples of data stored in databases
+For Linkedin:
+1. User data
+2. User posts
+3. Users connection relationships
+4. Messages
+
+Why can't we let the user hit the database directly?
+Databases were created using protocols that browsers don't understand.
+Databases don't have granual access as a first class citizen. Very hard to do user specific access in them.
+
+So servers has complete access to the databases and not the user.
+
+Databases usually allow access to 4 primitives
+1. Create Data
+2. Read Data
+3. Update Data
+4. Delete Data
+Popularly known as CRUD
+
+In mongoose, first you have to define the schema.
+
+Schema means structure of the data.
+Users -> 
+  email
+  password
+  firstname
+  city
+  age
+
+This sounds counter intuitive, since mongodb is schemaless.
+That is true, but mongoose makes you define schema for things like autocompletions/validating data before it goes to DB to make sure you are doing things right. 
+Schemaless DBs can be very dangerous, using schema in mongo makes it slightly less dangerous. 
+
+Defining Schema 
+const UserSchema = new mongoose.Schema({
+  email : String,
+  password : String, 
+  purchasedCourses : [{
+    type : mongoose.Schema.Types.ObjectId,
+    ref : "Course" 
+  }]
+})
+
+const CourseSchema = new mongoose.model({
+  title : String,
+  price : 5999
+}) 
+
+const User = mongoose.model("User",UserSchema)
+const Course = mongoose.model("Course",CourseSchema)
+
+create database
+User.create(){
+  username:req.body.username
+  password:req.body.password
+}
+
+read database
+User.findById(ObjectId)
+
+User.findOne({
+  username : "riyaan@gmail.com"
+}) // finds one entry 
+
+User.find({
+  username : "riyaan@gmail.com"
+}) // finds multiple entries
+
+Update database
+User.updateOne({
+  id : "1"
+},{
+  $push : {purchasedCourses : courseId}
+})
+
+User.updateOne({
+  id : "1"
+},{
+  password : "newPassword"
+}) // updates one entry
+
+User.update({},{
+  premium : true
+}) // updates every entry
+
+Delete database
+User.deleteMany({})
+// Deletes everything
+
+User.deleteOne({
+  username : "riyaan@gmail.com"
+}) // Deletes the specific entry.
+
+3 Jargons in databases
+1. Cluster
+2. Database
+3. Cluster
+
+Cluster is a Machine that has multiple databases for course selling website, ecommerce website and for each databases of these application has multiple tables such as user table, product table.
+ 
+
