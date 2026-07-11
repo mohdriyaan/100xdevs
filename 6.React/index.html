@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="onButtonPress()" id="btn">Counter 0</button>
+  <script>
+    function onButtonPress(){
+      const btnContent = document.querySelector("#btn").innerHTML
+      let number = btnContent.split(" ")[1]
+      let newNumber = parseInt(number++)
+      document.querySelector("#btn").innerHTML = `Counter ${number}`
+    }
+  </script>
+</body>
+</html>
+
+<!-- For big applications using DOM will be harder so React cam into picture and React was an easier way to manipulate DOM. -->
+
+<!-- Problem with this appfroach :
+  1. Too much code you have to write as the developer.
+  2. As your app scales (todo app for eg), this gets harder and harder.
+-->
