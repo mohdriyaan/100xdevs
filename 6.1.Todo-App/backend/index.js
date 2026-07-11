@@ -3,12 +3,14 @@ const express = require("express")
 const jwt = require("jsonwebtoken")
 const {todoSchema,updateTodoSchema} = require("./types.js")
 const {connectDB,Todo} = require("./db.js")
+const cors = require("cors")
 
 connectDB()
 
 const PORT = process.env.PORT
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 
 app.post("/todo",async(req,res)=>{

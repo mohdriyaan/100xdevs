@@ -1,9 +1,32 @@
-export function Todos(){
+export function Todos({todos}){
   return (
     <div>
-      <h1>Go to gym</h1>
-      <h2>You need to go to the gym.</h2>
-      <button>Mark as complete</button>
+      {todos.map((todo)=>{
+        return ( 
+        <>
+          <h1>{todo.title}</h1>
+          <h2>{todo.description}</h2>
+          <button onClick={()=>{
+            fetch("http://localhost:3000/completed",{
+              method:"PUT",
+              body:JSON.stringify({
+                id : todo._id
+              }),
+              headers:{
+                "Content-Type":"application/json" 
+              }
+            })
+            .then(async(res)=>{
+              const json = await res.json()
+              alert(`${todo.title} Todo marked as completed`) 
+            })
+          } 
+          }>
+            {todo.completed ? "Completed" : "Mark as Complete"}
+          </button>
+        </>
+        )
+      })}
     </div>
   )
 }
