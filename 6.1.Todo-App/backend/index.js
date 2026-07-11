@@ -38,7 +38,6 @@ app.get("/todos",async(req,res)=>{
 
 app.put("/completed",async(req,res)=>{
   const todoId = req.body
-  console.log("req.body:", req.body)
   const validateCompleteTodo = updateTodoSchema.safeParse(todoId)
 
   if(!validateCompleteTodo.success){
@@ -47,7 +46,7 @@ app.put("/completed",async(req,res)=>{
     })
   }else{
     await Todo.findByIdAndUpdate({
-      _id : req.body.id 
+      _id : req.body.id
     },
     {$set : {completed : true}}
     )
@@ -57,9 +56,12 @@ app.put("/completed",async(req,res)=>{
   }
 })
 app.use((err,req,res,next)=>{
-  return res.status(500).json({
-    message : err
-  })
+  if(err){
+    return res.status(500).json({
+      message : err.message
+    })
+  }
+  
 })
 
 app.listen(PORT,()=>{
