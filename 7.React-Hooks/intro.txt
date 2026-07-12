@@ -1,0 +1,33 @@
+React component return
+
+A component can only return a single top level xml
+Return can only have single child/componenent, in order to use multiple childs/componenets, parent element div or a fragment tag <> needs to be used
+
+Ex : 
+return (
+  <Component />
+  <Component />       -> Cannot be used
+)
+
+return (
+  <div>
+    <Component />
+    <Component />     -> Can be used
+  </div>
+)
+
+return (
+  <>
+    <Component />
+    <Component />     -> Can be used
+  </>
+)
+
+Why?
+1. Makes it easy for reconciliation
+2. Also react is designed in such a way that all the rendering and reconciliation needs to work from a single root. So by creating fragment or div tag it will connect all the child components to a root element instead of having seperate roots.
+
+
+Re-Rendering : When you manipulate DOM like appending element to the DOM, remove anything from the DOM or update anything in the DOM and much more is called re rendering.
+
+The rule of thumb for creating dynamic websites is minimizing re-renders.
