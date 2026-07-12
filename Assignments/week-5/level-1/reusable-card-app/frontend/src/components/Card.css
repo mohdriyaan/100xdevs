@@ -1,0 +1,73 @@
+.card {
+  max-width: 380px;
+  margin: 0 auto;
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+  font-family: system-ui, sans-serif;
+}
+
+.card-name {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.card-description {
+  margin: 8px 0 0;
+  color: #64748b;
+  font-size: 16px;
+}
+
+.card-interests-heading {
+  margin: 24px 0 4px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.card-interests-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card-interest {
+  margin: 0;
+  color: #64748b;
+  font-size: 15px;
+}
+
+.card-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.card-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+}
+
+.card-link:hover {
+  background: #1d4ed8;
+}
+
+.card-link-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
