@@ -1,0 +1,10 @@
+The functions that start with use are called hooks.
+
+Hooks in react are functions that allow you to hook into React state and lifecycle features from function components.
+
+1. useState
+Let's you describe the state of your app. whenever state updates, it triggers re-render which finally results in a DOM update.
+
+2. useEffect
+It allows you to perform side effects in function components.
+It serves the same purpose as "componentDidMount", "componentdidUpdate" and "componentWillUnmount" in React class components, but unified into a single API.
