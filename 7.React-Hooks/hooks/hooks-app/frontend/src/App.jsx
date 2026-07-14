@@ -29,7 +29,7 @@ The empty dependency array [] means:
 
 */
 
-function App(){
+function useTodos(){ // custom hooks
   const [todos,setTodos] = useState([])
 
   useEffect(()=>{
@@ -41,6 +41,13 @@ function App(){
         })  
     }, 5000);
   },[])
+
+  return todos
+
+}
+
+function App(){
+  const todos = useTodos()
 
   return (
     <Todos todos={todos}></Todos>

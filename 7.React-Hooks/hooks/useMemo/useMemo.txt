@@ -1,0 +1,3 @@
+Memoization means remembering some output given an input and not computing it again.
+
+useMemo will only recalculate if the inputVal changes and will memoize the expensive operations across re-renders.

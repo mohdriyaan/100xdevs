@@ -1,0 +1,2 @@
+useCallback is a hook in react to memoize fns which can help in optimizing the performance of your application, especially in cases involving child components that rely on reference equality to prevent unnecessary renders.
+
