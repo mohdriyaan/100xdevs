@@ -20,14 +20,19 @@ export function Assignment2() {
     const [sentences, setSentences] = useState(ALL_WORDS);
     const [filter, setFilter] = useState("");
 
-    const filteredSentences = sentences.filter(x => x.includes(filter))
+    const filteredSentences = React.useMemo(()=>{
+        const result = sentences.filter(x => x.includes(filter))
+        return result
+    },[sentences,filter])
 
     return <div>
         <input type="text" onChange={(e) => {
             setFilter(e.target.value)
         }}></input>
-        {filteredSentences.map(word => <div>
-            {word}    
-        </div>)}
+        {filteredSentences.map((word,index) => (
+            <div key={index}>
+                {word}
+            </div>    
+        ))}
     </div>
 }
