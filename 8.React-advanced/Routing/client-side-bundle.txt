@@ -1,0 +1,57 @@
+What is a Client Side Bundle?
+
+This is another important concept.
+
+React code looks like this
+
+function App() {
+  return <h1>Hello</h1>;
+}
+
+Browsers cannot understand JSX.
+
+Browsers also don't understand
+
+import React from "react";
+
+or
+
+import App from "./App";
+
+They only understand plain JavaScript.
+
+So before your React app is sent to users, tools like:
+
+Vite
+Webpack
+Parcel
+
+convert everything.
+
+Example.
+
+You may have
+
+App.jsx
+
+Navbar.jsx
+
+Home.jsx
+
+Footer.jsx
+
+Profile.jsx
+
+100 CSS files
+
+Images
+
+The bundler combines and transforms them into optimized files.
+
+bundle.js
+
+bundle.css
+
+These files are what the browser downloads.
+
+This is called the client-side bundle because it runs on the client (the user's browser).

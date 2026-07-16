@@ -1,0 +1,3 @@
+React.lazy is React's way of loading a component only when it is needed instead of including it in the initial client-side bundle.
+
+It works together with code splitting to improve the initial load time of your application.

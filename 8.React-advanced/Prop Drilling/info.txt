@@ -1,0 +1,46 @@
+Before, how do you think one should manage state?
+1. Keep everything in the top level component (C1).
+2. Keep everything as low as possible
+(at the LCA - Lowest common ancestor  of children that needs a state)
+
+Prop drilling is the process of passing data from a parent component to a deeply nested child component through one or more intermediate components that don't actually use the data.
+
+This is one of the most common problems React developers encounter as applications grow.
+
+How do we solve it?
+
+React provides Context API.
+
+Instead of drilling:
+
+App
+ │
+ ▼
+Dashboard
+ │
+ ▼
+Sidebar
+ │
+ ▼
+UserInfo
+
+React Context lets you do this:
+
+          User Context
+                │
+                │
+App ────────────┘
+ │
+ ▼
+Dashboard
+ │
+ ▼
+Sidebar
+ │
+ ▼
+UserInfo
+
+UserInfo can access the value directly.
+
+No intermediate component needs to pass it.
+

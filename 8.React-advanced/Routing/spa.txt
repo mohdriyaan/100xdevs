@@ -1,0 +1,106 @@
+Before React, websites worked like this:
+
+Browser
+   │
+   │ GET /
+   ▼
+Server
+   │
+   ▼
+Returns HTML
+
+Now suppose you click Orders.
+
+Again,
+
+Browser
+   │
+   │ GET /orders
+   ▼
+Server
+
+The server generates an entirely new HTML page.
+
+The browser throws away the old page and loads the new one.
+
+Every navigation means:
+Request server
+Generate HTML
+Download HTML
+Reload page
+
+This is called a Multi-Page Application (MPA).
+
+`````````````````````````````````````````````````````
+
+React changed this idea.
+
+Instead of downloading a new HTML page every time...
+
+...the browser downloads one HTML page.
+
+index.html
+
+Then React changes the page dynamically.
+
+Imagine this.
+
+You open
+example.com
+
+Browser downloads
+index.html
+
+which looks like
+
+<body>
+  <div id="root"></div>
+</body>
+
+Very little HTML.
+
+Then JavaScript loads.
+
+React starts
+
+Now React fills
+
+<div id="root">
+
+with components.
+
+For example
+<Home />
+
+Now you click
+Profile
+
+React doesn't ask for another HTML page.
+
+Instead it simply replaces
+
+<Home />
+
+with
+
+<Profile />
+
+The URL changes
+
+/home
+
+↓
+
+/profile
+
+But the page never reloads.
+
+Everything happens using JavaScript.
+
+That is why React apps are called
+
+Single Page Applications (SPAs).
+
+One HTML page.
+
+Everything else changes inside it.
