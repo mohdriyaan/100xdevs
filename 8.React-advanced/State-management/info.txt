@@ -1,0 +1,17 @@
+A cleaner way to store the state of your app.
+Until now, the cleanest thing you can do is use the Context API.
+It lets you teleport state.
+
+But there are better solutions that get rid of the problems that context API has (unnecessary re-renders).
+
+Recoil
+A state management library for react.
+
+Other popular ones:
+1. Zustand
+2. Redux
+
+Recoil
+Has the concept of an atom to store the state.
+An atom can be defined outside the component.
+Can be teleported to any component
