@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { UserContext } from "./UserContext"
+import { UserContext } from "../../UserContext"
 
 export const UpdateUser = () => {
   const [inputVal, setInputVal] = useState("")

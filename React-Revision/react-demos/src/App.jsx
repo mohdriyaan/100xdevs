@@ -1,13 +1,12 @@
-import { UserProfile } from "./UserProfile"
-import { UserProvider } from "./UserContext"
-import { UpdateUser } from "./UpdateUser"
+import { FocusInput } from "./FocusInput"
+import { Timer } from "./Timer"
 
 const App = () => {
   return (
-    <UserProvider>
-      <UserProfile />
-      <UpdateUser />
-    </UserProvider>
+    <>
+      <FocusInput />
+      <Timer />
+    </>
   )
 }
 
