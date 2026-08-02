@@ -1,0 +1,51 @@
+.headerTitle {
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.subTitle {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0 0 2rem;
+  max-width: 700px;
+}
+
+.mainWrapper {
+  min-height: 100vh;
+  padding: 48px;
+  background:
+    radial-gradient(circle at top left, rgba(99, 102, 241, 0.18), transparent 28%),
+    linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+  box-sizing: border-box;
+}
+
+.heroPanel {
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  margin-bottom: 24px;
+}
+
+.todoListWrapper {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.todoCard {
+  height: 100%;
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.todoCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.12);
+}
