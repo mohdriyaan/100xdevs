@@ -65,7 +65,7 @@ function App() {
       <div className={classes.todoListWrapper}>
         {todoList && todoList.length > 0 ?
           todoList.map((todo) =>
-            <TodoItem todo={todo} fetchDetailsOfCurrentTodo={fetchDetailsOfCurrentTodo} />
+            <TodoItem key={todo?.id} todo={todo} fetchDetailsOfCurrentTodo={fetchDetailsOfCurrentTodo} />
           ) :
           null
         }

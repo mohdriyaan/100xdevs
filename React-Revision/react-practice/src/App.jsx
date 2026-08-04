@@ -2,15 +2,45 @@ import { ContextButtonComponent } from "./components/context-concept/button"
 import { ContextTextComponent } from "./components/context-concept/text"
 import { FormComponent } from "./components/form"
 import { FunctionalComponent, FunctionalComponent1 } from "./components/functional-components"
-import { LoginComponent } from "./components/login"
 import { ProductList } from "./components/products"
-import { RegisterComponent } from "./components/register"
 import { UseReducerExample } from "./components/use-reducer-example"
 import { Users } from "./components/users"
+import { RecipeList } from "./pages/recipies"
+import { CommentsList } from "./pages/comments"
+import { Link, Route, Routes, useNavigate, useRoutes } from "react-router-dom"
+import { RecipeDetailsPage } from "./pages/recipe-details"
+import { NotFoundPage } from "./pages/not-found"
+import { Layout } from "./components/layout"
+
+function CustomRoutes(){
+  const element = useRoutes([
+    {
+      path : "/home", element : <Layout />,
+      children : [
+        {
+          path : "recipe-list", element : <RecipeList />
+        },
+        {
+          path : "comments-list", element : <CommentsList />
+        },
+        {
+          path : "recipe-details/:id", element : <RecipeDetailsPage />
+        }
+      ]
+    },
+    {
+      path : "*", element : <NotFoundPage />
+    }
+  ])
+
+  return element
+}
+
 
 const dummyData = ["Product1","Product2","Product3"]
 
 function App() {
+  const navigate = useNavigate()
   return <div>
     {/* <FunctionalComponent />
     <FunctionalComponent1 /> */}
@@ -20,10 +50,25 @@ function App() {
     <ContextTextComponent /> */}
     {/* <UseReducerExample /> */}
     {/* <FormComponent /> */}
-    <div style={{display:"flex" , justifyContent:"space-around"}}>
-      <LoginComponent />
-      <RegisterComponent />
+    <h1>Wecome to the Real World</h1>
+    <div>
+      <Link to="/home/recipe-list">Alternate way of navigating to recipe list page</Link>
     </div>
+    <button onClick={()=>navigate("/home/recipe-list")} style={{background : "black", color:"white", cursor:"pointer"}}>Navigate to Recipe Lists Page</button>
+    <button onClick={()=>navigate("/home/comments-list")} style={{cursor:"pointer"}}>Navigate to Comments List Page</button>
+    {/* <Routes>
+      <Route path="/home" element={<Layout />}>
+        <Route path="recipe-list" element = {<RecipeList />} />
+        <Route path="comments-list" element={<CommentsList />}/>
+        <Route path="recipe-list/:id" element={<RecipeDetailsPage />} />
+      </Route>
+      
+      <Route path="*" element={<NotFoundPage />}/>
+    </Routes> */}
+
+    <CustomRoutes />
+    
+    
   </div>
 }
 
