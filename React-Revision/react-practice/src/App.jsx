@@ -11,6 +11,10 @@ import { Link, Route, Routes, useNavigate, useRoutes } from "react-router-dom"
 import { RecipeDetailsPage } from "./pages/recipe-details"
 import { NotFoundPage } from "./pages/not-found"
 import { Layout } from "./components/layout"
+import { ReactHookFormExamplePage } from "./pages/react-hook-form-example"
+import { Hooks } from "./pages/hooks"
+import { UseMemoExample } from "./pages/hooks/use-memo"
+import { UseCallbackExample } from "./pages/hooks/use-callback/index"
 
 function CustomRoutes(){
   const element = useRoutes([
@@ -30,7 +34,19 @@ function CustomRoutes(){
     },
     {
       path : "*", element : <NotFoundPage />
-    }
+    },
+    {
+      path : "/react-hook-form", element : <ReactHookFormExamplePage /> 
+    },
+    {
+      path : "/hooks", element : <Hooks />
+    },
+    {
+      path : "/use-memo", element : <UseMemoExample />
+    },
+    {
+      path : "/use-callback", element : <UseCallbackExample />
+    } 
   ])
 
   return element
