@@ -1,7 +1,18 @@
+import { useRoutes,Outlet } from "react-router-dom"
+import Header from "./components/Header"
+import HomePage from "./pages/HomePage"
+import { Container } from "react-bootstrap"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+
 function App() {
   return (
     <div>
-      <h1>MERN Auth</h1>
+      <Header />
+      <ToastContainer />
+      <Container className="my-2">
+        <Outlet />
+      </Container>
     </div>
   )
 }
