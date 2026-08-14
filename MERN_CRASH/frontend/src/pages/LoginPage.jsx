@@ -6,6 +6,7 @@ import FormContainer from "../components/FormContainer";
 import { useLoginMutation } from "../features/userApiSlice";
 import { setCredentials } from "../features/authSlice";
 import { toast } from "react-toastify";
+import Loader from "../components/Loader";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("")
@@ -28,10 +29,11 @@ const LoginPage = () => {
     e.preventDefault()
     try {
       const res = await login({email,password}).unwrap()
+      // unwraps() the promise
       dispatch(setCredentials({...res}))
       navigate("/")
     } catch (error) {
-      toast(error?.data?.message || error.error)
+      toast.error(error?.data?.message || error.error)
     }
   }
 
@@ -62,12 +64,14 @@ const LoginPage = () => {
           </Form.Control>
         </Form.Group>
 
+        {isLoading && <Loader />}
+
         <Button type="submit" variant="primary" className="mt-3">
           Sign In
         </Button>
 
         <Row className="py-3">
-          <Col>New Customer? <Link to="/register">Regsiter</Link></Col>
+          <Col>New Customer? <Link to="/register">Register</Link></Col>
         </Row>
       </Form>
     </FormContainer>
