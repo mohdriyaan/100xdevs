@@ -21,10 +21,10 @@ const userSchema = mongoose.Schema({
 
 //  Pre hook : before saving, run a function
 // Makes sure user's password is hashed before it gets stored on MongoDB
-userSchema.pre("save", async function(next){
-  // if the user changes already registered updates name or email, the password hashing should not work
+userSchema.pre("save", async function(){
+  // If password was not modified, skip hashing and return.
   if(!this.isModified("password")){
-    return next()
+    return
   }
 
   const salt = await bcrypt.genSalt(10)

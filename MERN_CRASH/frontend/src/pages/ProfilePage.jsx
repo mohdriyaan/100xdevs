@@ -1,35 +1,33 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { Form, Button} from "react-bootstrap";
 import FormContainer from "../components/FormContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { useRegisterMutation } from "../features/userApiSlice";
 import { toast } from "react-toastify";
 import Loader from "../components/Loader";
 import { setCredentials } from "../features/authSlice";
+import { useUpdateUserMutation } from "../features/userApiSlice";
 
-
-
-const RegisterPage = () => {
+const ProfilePage = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [name, setName] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
 
-  const [register, {isLoading}] = useRegisterMutation()
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const {userInfo} = useSelector((state)=>state.auth)
+  const [updateUser, {isLoading}] = useUpdateUserMutation()
 
+  const {userInfo} = useSelector((state)=>state.auth)
 
   useEffect(()=>{
     if(userInfo){
-      navigate("/")
+      setName(userInfo.name)
+      setEmail(userInfo.email)
     }
-  },[navigate,userInfo])
+  },[userInfo])
 
   const submitHandler = async(e) => {
     e.preventDefault()
@@ -38,18 +36,23 @@ const RegisterPage = () => {
       return;
     }else{
       try{
-        const res = await register({name, email, password}).unwrap()
-        dispatch(setCredentials({...res}));
-        navigate("/")
-      }catch(error){
-        toast.error(error?.data?.message || error.error)
+        const res = await updateUser({
+          _id : userInfo._id,
+          name,
+          email,
+          password
+        }).unwrap()
+        dispatch(setCredentials({...res}))
+        toast.success("Profile Updated")
+      }catch(err){
+        toast.error(err?.data?.message || err.error)
       }
     }
   }
 
   return (
     <FormContainer>
-      <h1>Sign Up</h1>
+      <h1>Update Profile</h1>
 
       <Form onSubmit={submitHandler}>
         <Form.Group className="my-2" controlId="name">
@@ -99,15 +102,12 @@ const RegisterPage = () => {
         {isLoading && <Loader />}
 
         <Button type="submit" variant="primary" className="mt-3">
-          Sign Up
+          Update
         </Button>
 
-        <Row className="py-3">
-          <Col>Already have an Account? <Link to="/login">Login</Link></Col>
-        </Row>
       </Form>
     </FormContainer>
   )
 }
 
-export default RegisterPage
+export default ProfilePage
